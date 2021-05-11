@@ -59,7 +59,12 @@ module SVG
     end
 
     def add(obj)
-      @simple_objects.push(obj)
+      case obj
+      when SVG::Symbol
+        @symbols << obj
+      else
+        @simple_objects << obj
+      end
       obj
     end
 

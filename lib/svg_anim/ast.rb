@@ -62,7 +62,7 @@ module SVG
       d=val
       e=0
       f=0
-      @attrs[:transform]+="maxtix(#{a},#{b},#{c},#{d},#{e},#{f})"
+      @attrs[:transform]+="matrix(#{a},#{b},#{c},#{d},#{e},#{f})"
     end
   end
 
@@ -70,12 +70,12 @@ module SVG
   end
 
   class Symbol < SVG::Object
-    attr_accessor :name,:group
+    attr_accessor :name
 
-    def initialize name,group=nil
+    def initialize name,svg_text=nil
       super("symbol")
       @name=name
-      @group=group
+      @svg_text=svg_text
     end
 
     def self.from filename
@@ -92,7 +92,7 @@ module SVG
       code=Code.new
       code << "<symbol id=\"#{@name}\">\n"
       code.indent=2
-      code << group
+      code << @svg_text
       code.indent=0
       code << "</symbol>"
       code.finalize
