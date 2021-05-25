@@ -29,7 +29,7 @@ film.add_background "background_grey.svg"
   end
 end
 
-scale=2
+scale=1
 ['w','b'].each do |color|
   ['p','r','n','b','q','k'].each do |piece|
     name="#{piece}#{color}"
